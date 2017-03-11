@@ -1,4 +1,5 @@
 class Api::SessionsController < ApplicationController
+  before_action :require_logged_in, only: [:destroy]
   def create
     sp = session_params
     @user = User.find_by_credentials(sp[:username], sp[:password])
@@ -7,13 +8,13 @@ class Api::SessionsController < ApplicationController
       session[:session_token] = @user.session_token
       render :show
     else
-      render json: {msg: "Invalid credentials."}, status: 401
+      render json: ["Invalid credentials."], status: 401
     end
   end
 
   def destroy
     if current_user.nil?
-      render json: {msg: "You are not logged in."}, status: 404
+      render json: ["You are not logged in."], status: 404
       return
     end
 
