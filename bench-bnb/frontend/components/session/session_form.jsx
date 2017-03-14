@@ -16,7 +16,6 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
    e.preventDefault();
    const user = Object.assign({}, this.state);
-  //  console.log(user);
    this.props.processForm(user, this.props.formType).then(() => this.redirect());
   }
 
@@ -29,7 +28,6 @@ class SessionForm extends React.Component {
     state[e.target.id] = e.target.value;
 
     this.setState(state);
-    // console.log(this.state);
   }
 
   render() {

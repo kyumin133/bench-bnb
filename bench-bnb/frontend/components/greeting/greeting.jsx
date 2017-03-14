@@ -8,7 +8,6 @@ class Greeting extends React.Component {
   }
 
   logged_in() {
-    // console.log(this.props.currentUser);
     return this.props.currentUser !== null;
     // this.forceUpdate();
   }
